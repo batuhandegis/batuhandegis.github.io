@@ -2,33 +2,123 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Batuhan Degis</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
     body {
-      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: black;
+      color: #00ff00;
+      font-family: 'Press Start 2P', monospace;
+      overflow: hidden;
+    }
+
+    .matrix {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: black;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    canvas {
+      display: block;
+    }
+
+    .centered {
+      position: relative;
+      z-index: 1;
       text-align: center;
-      padding: 100px;
-      background-color: #f4f4f4;
-      color: #333;
+      padding-top: 15%;
+      max-width: 600px;
+      margin: 0 auto;
+      color: #00ff00;
     }
+
     h1 {
-      font-size: 48px;
-      margin-bottom: 20px;
+      font-size: 24px;
+      color: #00ff00;
+      margin: 0;
     }
-    p {
-      font-size: 20px;
-      color: #555;
+
+    .tagline {
+      font-size: 14px;
+      margin-top: 20px;
+      color: #00ff00;
     }
+
     .heart {
-      color: #e25555;
-      font-size: 30px;
+      font-size: 60px;
+      color: red;
+      margin-top: 30px;
     }
   </style>
 </head>
 <body>
-  <h1>Website Under Construction</h1>
-  <p>Thanks for stopping by. The blog will be ready soon.</p>
-  <p>Spread kindness wherever you go! <span class="heart">❤️</span></p>
+  <div class="matrix">
+    <canvas id="matrixCanvas"></canvas>
+  </div>
+
+ <div class="centered">
+  <h1>Batuhan Degis, MD</h1>
+  <div class="tagline">
+    Site under construction. <br>
+    Soon, I will be sharing personal experiences, goals, and developments in AI related to medicine on this site.
+    Kindness is contagious.
+  </div>
+  <div class="heart">❤️</div>
+</div>
+  <div class="heart">❤️</div>
+
+<style>
+  .heart {
+    font-size: 60px;
+    color: #00ff00; /* neon yeşili */
+    text-shadow:
+      0 0 5px #00ff00,
+      0 0 10px #00ff00,
+      0 0 20px #00ff00,
+      0 0 40px #00ff00;
+    margin-top: 30px;
+    user-select: none;
+  }
+</style>
+
+
+  <script>
+    const canvas = document.getElementById("matrixCanvas");
+    const ctx = canvas.getContext("2d");
+
+    canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+
+    const letters = "01010101010101";
+    const fontSize = 12;
+    const columns = canvas.width / fontSize;
+    const drops = Array(Math.floor(columns)).fill(1);
+
+    function drawMatrix() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.fillStyle = "#0F0";
+      ctx.font = fontSize + "px monospace";
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+
+        drops[i]++;
+      }
+    }
+
+    setInterval(drawMatrix, 35);
+  </script>
 </body>
 </html>
