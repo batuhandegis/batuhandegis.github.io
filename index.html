@@ -47,12 +47,19 @@
       font-size: 14px;
       margin-top: 20px;
       color: #00ff00;
+      line-height: 1.4;
     }
 
     .heart {
       font-size: 60px;
-      color: red;
+      color: #00ff00; /* neon green */
+      text-shadow:
+        0 0 5px #00ff00,
+        0 0 10px #00ff00,
+        0 0 20px #00ff00,
+        0 0 40px #00ff00;
       margin-top: 30px;
+      user-select: none;
     }
   </style>
 </head>
@@ -61,29 +68,15 @@
     <canvas id="matrixCanvas"></canvas>
   </div>
 
- <div class="centered">
-  <h1>Batuhan Degis, MD</h1>
-  <div class="tagline">
-    This site is a work in progress! <br>
-    Soon, I’ll be sharing personal stories, goals, and exciting updates about AI in medicine.
-    Stay tuned—and remember, kindness is contagious!
+  <div class="centered">
+    <h1>Batuhan Degis, MD</h1>
+    <div class="tagline">
+      This site is a work in progress! <br>
+      Soon, I’ll be sharing personal stories, goals, and exciting updates about AI in medicine.<br>
+      Stay tuned—and remember, kindness is contagious!
+    </div>
+    <div class="heart">❤️</div>
   </div>
-  <div class="heart">❤️</div>
-
-<style>
-  .heart {
-    font-size: 60px;
-    color: #00ff00; /* neon yeşili */
-    text-shadow:
-      0 0 5px #00ff00,
-      0 0 10px #00ff00,
-      0 0 20px #00ff00,
-      0 0 40px #00ff00;
-    margin-top: 30px;
-    user-select: none;
-  }
-</style>
-
 
   <script>
     const canvas = document.getElementById("matrixCanvas");
