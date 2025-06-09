@@ -1,38 +1,199 @@
-.App {
-    text-align: center;
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Custom styles for the medical resume website */
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
 }
 
-.App-logo {
-    height: 40vmin;
-    pointer-events: none;
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
-.App-header {
-    background-color: #0f0f10;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
-    color: white;
+/* Apply fade-in animation to sections */
+section {
+  animation: fadeInUp 0.6s ease-out;
 }
 
-.App-link {
-    color: #61dafb;
+/* Professional hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Custom button styles */
+.btn-primary {
+  @apply bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-blue-700 hover:shadow-lg;
+}
+
+.btn-secondary {
+  @apply bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold border-2 border-blue-600 transition-all duration-300 hover:bg-blue-600 hover:text-white;
+}
+
+/* Professional card styles */
+.medical-card {
+  @apply bg-white rounded-lg shadow-lg p-6 transition-all duration-300 hover:shadow-xl;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3b82f6;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+/* Professional typography */
+.medical-heading {
+  @apply text-3xl md:text-4xl font-bold text-gray-800 mb-4;
+}
+
+.medical-subheading {
+  @apply text-xl md:text-2xl font-semibold text-gray-700 mb-3;
+}
+
+.medical-text {
+  @apply text-gray-600 leading-relaxed;
+}
+
+/* Hero section specific styles */
+.hero-gradient {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.9) 0%, rgba(30, 64, 175, 0.9) 100%);
+}
+
+/* Navigation specific styles */
+.nav-link {
+  @apply px-3 py-2 rounded-md transition-all duration-300 hover:bg-blue-50 hover:text-blue-600;
+}
+
+.nav-link.active {
+  @apply text-blue-600 bg-blue-50;
+}
+
+/* Medical icon styles */
+.medical-icon {
+  @apply w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-600;
+}
+
+/* Responsive text adjustments */
+@media (max-width: 768px) {
+  .hero-title {
+    @apply text-4xl;
+  }
+  
+  .hero-subtitle {
+    @apply text-xl;
+  }
+}
+
+/* Print styles for professional use */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  section {
+    page-break-inside: avoid;
+  }
+  
+  .print-friendly {
+    background: white !important;
+    color: black !important;
+  }
+}
+
+/* Accessibility improvements */
+.focus-visible:focus {
+  @apply outline-none ring-2 ring-blue-500 ring-offset-2;
+}
+
+/* Professional loading state */
+.loading {
+  @apply animate-pulse;
+}
+
+/* Medical theme color variables */
+:root {
+  --medical-blue: #3b82f6;
+  --medical-blue-dark: #1e40af;
+  --medical-blue-light: #dbeafe;
+  --medical-gray: #6b7280;
+  --medical-gray-light: #f9fafb;
+}
+
+/* Enhanced card shadows for depth */
+.card-elevated {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.card-elevated:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Professional image styles */
+.profile-image {
+  @apply rounded-full border-4 border-white shadow-xl object-cover;
+}
+
+/* Section divider */
+.section-divider {
+  @apply w-24 h-1 bg-blue-600 mx-auto mb-8;
+}
+
+/* Medical expertise grid */
+.expertise-grid {
+  @apply grid gap-6 md:gap-8;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+/* Professional contact form styles */
+.form-input {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300;
+}
+
+.form-textarea {
+  @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-vertical;
+}
+
+/* Medical statistics styling */
+.stat-number {
+  @apply text-3xl md:text-4xl font-bold text-blue-600;
+}
+
+.stat-label {
+  @apply text-sm md:text-base text-gray-600 font-medium;
 }
