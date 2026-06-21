@@ -12,39 +12,34 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
 
   <style>
     :root {
       --paper: #fffaf3;
-      --champagne: #f7efe5;
+      --cream: #f7efe5;
       --blush: #ead1c4;
-      --rose: #b98473;
+      --gold: #b7925a;
       --sage: #7f8f78;
       --olive: #55634d;
-      --gold: #b7925a;
       --ink: #31261f;
       --muted: #756b62;
       --white: #ffffff;
       --shadow: 0 22px 70px rgba(49, 38, 31, 0.14);
-      --soft-shadow: 0 14px 38px rgba(49, 38, 31, 0.09);
-      --radius: 28px;
+      --soft: 0 14px 38px rgba(49, 38, 31, 0.09);
     }
 
     * { box-sizing: border-box; }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       color: var(--ink);
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(234, 209, 196, 0.55), transparent 34rem),
-        radial-gradient(circle at 85% 15%, rgba(127, 143, 120, 0.22), transparent 28rem),
-        linear-gradient(180deg, var(--champagne), var(--paper) 42%, #f4ece1 100%);
+        radial-gradient(circle at 10% 0%, rgba(234, 209, 196, 0.68), transparent 28rem),
+        radial-gradient(circle at 90% 12%, rgba(127, 143, 120, 0.22), transparent 26rem),
+        linear-gradient(180deg, var(--cream), var(--paper) 48%, #f3eadf 100%);
       min-height: 100vh;
       overflow-x: hidden;
     }
@@ -54,13 +49,12 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 0;
-      opacity: 0.28;
+      opacity: 0.25;
       background-image:
-        linear-gradient(rgba(183, 146, 90, 0.12) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(183, 146, 90, 0.10) 1px, transparent 1px);
+        linear-gradient(rgba(183,146,90,0.11) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(183,146,90,0.09) 1px, transparent 1px);
       background-size: 72px 72px;
-      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.75), transparent 62%);
+      mask-image: linear-gradient(to bottom, #000, transparent 64%);
     }
 
     a { color: inherit; }
@@ -80,17 +74,15 @@
       height: 18px;
       border-radius: 80% 0 80% 0;
       background: rgba(185, 132, 115, 0.32);
-      animation: fall linear infinite;
       transform: rotate(18deg);
+      animation: fall linear infinite;
     }
 
     @keyframes fall {
-      to {
-        transform: translate3d(var(--drift), 112vh, 0) rotate(310deg);
-      }
+      to { transform: translate3d(var(--drift), 112vh, 0) rotate(310deg); }
     }
 
-    .site-shell {
+    .page {
       position: relative;
       z-index: 2;
     }
@@ -98,15 +90,19 @@
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 20;
-      backdrop-filter: blur(18px);
-      background: rgba(255, 250, 243, 0.72);
+      z-index: 10;
       border-bottom: 1px solid rgba(183, 146, 90, 0.18);
+      background: rgba(255, 250, 243, 0.75);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav,
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
     }
 
     .nav {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
       min-height: 70px;
       display: flex;
       align-items: center;
@@ -118,39 +114,39 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-family: "Playfair Display", serif;
-      font-size: clamp(20px, 3vw, 28px);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(22px, 3vw, 30px);
       font-weight: 700;
-      letter-spacing: 0.02em;
       text-decoration: none;
+      letter-spacing: -0.02em;
       white-space: nowrap;
     }
 
     .brand-mark {
       width: 34px;
       height: 34px;
-      border: 1px solid rgba(183, 146, 90, 0.55);
-      border-radius: 50%;
       display: grid;
       place-items: center;
+      border-radius: 50%;
+      border: 1px solid rgba(183,146,90,0.45);
       color: var(--gold);
-      background: rgba(255, 255, 255, 0.55);
-      box-shadow: var(--soft-shadow);
+      background: rgba(255,255,255,0.55);
+      box-shadow: var(--soft);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
       justify-content: flex-end;
     }
 
     .nav-links a {
       text-decoration: none;
-      font-size: 14px;
-      font-weight: 700;
       color: var(--muted);
+      font-size: 14px;
+      font-weight: 800;
       padding: 10px 12px;
       border-radius: 999px;
       transition: 0.25s ease;
@@ -161,21 +157,14 @@
       background: rgba(183, 146, 90, 0.12);
     }
 
-    .section {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 90px 0;
-    }
-
     .hero {
       min-height: calc(100vh - 70px);
       display: grid;
-      place-items: center;
-      padding: 70px 0 80px;
+      align-items: center;
+      padding: 72px 0 86px;
     }
 
     .hero-grid {
-      width: min(1120px, calc(100% - 32px));
       display: grid;
       grid-template-columns: 1.08fr 0.92fr;
       gap: 38px;
@@ -184,41 +173,36 @@
 
     .eyebrow {
       display: inline-flex;
-      align-items: center;
-      gap: 10px;
       margin: 0 0 18px;
       padding: 9px 14px;
-      border: 1px solid rgba(183, 146, 90, 0.28);
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.52);
       color: var(--olive);
+      background: rgba(255,255,255,0.56);
+      border: 1px solid rgba(183,146,90,0.26);
+      box-shadow: var(--soft);
       font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
+      font-weight: 900;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      box-shadow: var(--soft-shadow);
     }
 
     h1, h2, h3 {
+      margin: 0;
       font-family: "Playfair Display", Georgia, serif;
       line-height: 1.02;
-      margin: 0;
     }
 
     h1 {
       font-size: clamp(58px, 10.5vw, 132px);
       letter-spacing: -0.055em;
-      color: var(--ink);
     }
 
     .amp {
-      display: inline-block;
       color: var(--gold);
       font-style: italic;
-      transform: translateY(-0.04em);
     }
 
-    .hero-lead {
+    .lead {
       max-width: 660px;
       margin: 24px 0 0;
       color: var(--muted);
@@ -227,14 +211,15 @@
     }
 
     .quote {
+      max-width: 620px;
       margin: 28px 0 0;
       padding: 18px 20px;
       border-left: 3px solid var(--gold);
-      color: var(--olive);
-      background: rgba(255, 255, 255, 0.48);
       border-radius: 0 18px 18px 0;
-      box-shadow: var(--soft-shadow);
-      max-width: 620px;
+      color: var(--olive);
+      background: rgba(255,255,255,0.50);
+      box-shadow: var(--soft);
+      line-height: 1.6;
     }
 
     .quote strong {
@@ -246,61 +231,44 @@
       text-transform: uppercase;
     }
 
-    .hero-actions {
+    .actions,
+    .card-actions {
       display: flex;
-      gap: 12px;
       flex-wrap: wrap;
-      margin-top: 34px;
+      gap: 12px;
+      margin-top: 32px;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
       min-height: 48px;
       padding: 14px 20px;
       border-radius: 999px;
-      border: 1px solid rgba(183, 146, 90, 0.34);
+      border: 1px solid rgba(183,146,90,0.34);
       text-decoration: none;
-      font-weight: 800;
-      box-shadow: var(--soft-shadow);
-      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-      cursor: pointer;
       font: inherit;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: var(--soft);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 18px 42px rgba(49, 38, 31, 0.13);
-    }
-
-    .btn-primary {
-      background: var(--ink);
-      color: var(--white);
-      border-color: var(--ink);
-    }
-
-    .btn-light {
-      background: rgba(255, 255, 255, 0.66);
-      color: var(--ink);
-    }
-
-    .btn-gold {
-      background: var(--gold);
-      color: var(--white);
-      border-color: var(--gold);
-    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 18px 42px rgba(49,38,31,0.13); }
+    .btn-primary { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .btn-gold { background: var(--gold); color: #fff; border-color: var(--gold); }
+    .btn-light { background: rgba(255,255,255,0.68); color: var(--ink); }
 
     .hero-card {
-      position: relative;
       min-height: 620px;
-      border-radius: 42px;
+      position: relative;
       padding: 24px;
+      border-radius: 42px;
+      border: 1px solid rgba(183,146,90,0.22);
       background:
         linear-gradient(145deg, rgba(255,255,255,0.80), rgba(255,250,243,0.62)),
         radial-gradient(circle at 30% 20%, rgba(234, 209, 196, 0.78), transparent 20rem);
-      border: 1px solid rgba(183, 146, 90, 0.22);
       box-shadow: var(--shadow);
       overflow: hidden;
     }
@@ -309,80 +277,60 @@
     .hero-card::after {
       content: "";
       position: absolute;
-      border: 1px solid rgba(183, 146, 90, 0.28);
+      border: 1px solid rgba(183,146,90,0.28);
       border-radius: 50%;
       pointer-events: none;
     }
 
-    .hero-card::before {
-      width: 420px;
-      height: 420px;
-      top: -160px;
-      right: -150px;
-    }
-
-    .hero-card::after {
-      width: 260px;
-      height: 260px;
-      bottom: -96px;
-      left: -92px;
-    }
+    .hero-card::before { width: 420px; height: 420px; top: -160px; right: -150px; }
+    .hero-card::after { width: 260px; height: 260px; bottom: -96px; left: -92px; }
 
     .monogram-card {
-      position: relative;
-      height: 100%;
       min-height: 572px;
-      border-radius: 32px;
+      height: 100%;
       display: grid;
       place-items: center;
       text-align: center;
+      border-radius: 32px;
       background:
-        linear-gradient(rgba(49, 38, 31, 0.05), rgba(49, 38, 31, 0.05)),
+        linear-gradient(rgba(49,38,31,0.05), rgba(49,38,31,0.05)),
         radial-gradient(circle, rgba(255,255,255,0.74) 0 32%, transparent 33%),
-        linear-gradient(135deg, rgba(127, 143, 120, 0.24), rgba(234, 209, 196, 0.54));
+        linear-gradient(135deg, rgba(127,143,120,0.24), rgba(234,209,196,0.54));
       overflow: hidden;
+      position: relative;
     }
 
-    .ornament {
+    .ring {
       position: absolute;
       width: 86%;
       height: 86%;
-      border: 1px solid rgba(183, 146, 90, 0.38);
+      border: 1px solid rgba(183,146,90,0.38);
       border-radius: 48% 52% 50% 50%;
       animation: breathe 7s ease-in-out infinite;
     }
 
-    .ornament.second {
-      width: 72%;
-      height: 72%;
-      animation-delay: -2.4s;
-      transform: rotate(18deg);
-    }
+    .ring.second { width: 72%; height: 72%; animation-delay: -2.4s; transform: rotate(18deg); }
+    @keyframes breathe { 50% { transform: scale(0.965) rotate(5deg); } }
 
-    @keyframes breathe {
-      50% { transform: scale(0.965) rotate(5deg); }
-    }
-
-    .monogram {
+    .letters {
       position: relative;
       z-index: 2;
-    }
-
-    .monogram .letters {
-      font-family: "Playfair Display", serif;
+      font-family: "Playfair Display", Georgia, serif;
       font-size: clamp(78px, 10vw, 132px);
       color: var(--gold);
       letter-spacing: -0.06em;
       line-height: 0.9;
     }
 
-    .monogram .date {
+    .date {
+      position: relative;
+      z-index: 2;
       margin-top: 18px;
       color: var(--olive);
-      font-weight: 800;
+      font-size: 13px;
+      font-weight: 900;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      font-size: 13px;
     }
 
     .countdown {
@@ -399,17 +347,16 @@
     .count-box {
       padding: 14px 8px;
       border-radius: 20px;
-      background: rgba(255, 255, 255, 0.72);
-      border: 1px solid rgba(183, 146, 90, 0.20);
+      background: rgba(255,255,255,0.74);
+      border: 1px solid rgba(183,146,90,0.20);
       text-align: center;
       backdrop-filter: blur(10px);
     }
 
     .count-box strong {
       display: block;
+      font-family: "Playfair Display", Georgia, serif;
       font-size: clamp(22px, 4vw, 34px);
-      font-family: "Playfair Display", serif;
-      color: var(--ink);
     }
 
     .count-box span {
@@ -417,22 +364,26 @@
       margin-top: 3px;
       color: var(--muted);
       font-size: 12px;
-      font-weight: 800;
-      text-transform: uppercase;
+      font-weight: 900;
       letter-spacing: 0.06em;
+      text-transform: uppercase;
     }
 
-    .section-heading {
+    .section {
+      padding: 90px 0;
+    }
+
+    .heading {
       text-align: center;
       margin-bottom: 38px;
     }
 
-    .section-heading .small {
+    .small {
       color: var(--gold);
+      font-size: 13px;
       font-weight: 900;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      font-size: 13px;
       margin-bottom: 12px;
     }
 
@@ -441,33 +392,39 @@
       letter-spacing: -0.035em;
     }
 
-    .section-heading p {
-      max-width: 680px;
+    .heading p {
+      max-width: 700px;
       margin: 18px auto 0;
       color: var(--muted);
       font-size: 18px;
       line-height: 1.7;
     }
 
-    .event-grid {
+    .event-grid,
+    .rsvp-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 22px;
     }
 
-    .event-card,
-    .form-card,
-    .timeline-card,
-    .note-card {
-      border: 1px solid rgba(183, 146, 90, 0.22);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.66);
-      box-shadow: var(--soft-shadow);
+    .event-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .rsvp-grid { grid-template-columns: 0.78fr 1.22fr; align-items: start; }
+
+    .card {
+      border: 1px solid rgba(183,146,90,0.22);
+      border-radius: 28px;
+      background: rgba(255,255,255,0.66);
+      box-shadow: var(--soft);
       backdrop-filter: blur(18px);
     }
 
-    .event-card {
+    .event-card,
+    .note-card,
+    .form-card,
+    .timeline-card {
       padding: 28px;
+    }
+
+    .event-card {
       position: relative;
       overflow: hidden;
     }
@@ -477,32 +434,29 @@
       position: absolute;
       width: 160px;
       height: 160px;
-      border-radius: 50%;
-      background: rgba(234, 209, 196, 0.36);
       right: -64px;
       top: -64px;
+      border-radius: 50%;
+      background: rgba(234,209,196,0.36);
     }
 
     .event-card h3 {
-      font-size: clamp(30px, 4vw, 46px);
       position: relative;
       z-index: 1;
+      font-size: clamp(30px, 4vw, 46px);
     }
 
     .event-date {
       display: inline-flex;
-      align-items: center;
-      gap: 8px;
       margin: 18px 0 22px;
       padding: 10px 14px;
       border-radius: 999px;
       color: var(--olive);
-      background: rgba(127, 143, 120, 0.12);
+      background: rgba(127,143,120,0.12);
       font-weight: 900;
-      letter-spacing: 0.02em;
     }
 
-    .detail-list {
+    .details {
       display: grid;
       gap: 14px;
       margin: 0 0 24px;
@@ -512,11 +466,10 @@
       line-height: 1.5;
     }
 
-    .detail-list li {
+    .details li {
       display: grid;
       grid-template-columns: 34px 1fr;
       gap: 12px;
-      align-items: start;
     }
 
     .icon {
@@ -525,28 +478,13 @@
       border-radius: 50%;
       display: grid;
       place-items: center;
-      background: rgba(183, 146, 90, 0.14);
+      background: rgba(183,146,90,0.14);
       color: var(--gold);
-      font-size: 16px;
     }
 
-    .detail-list b {
-      display: block;
-      color: var(--ink);
-      margin-bottom: 2px;
-    }
+    .details b { display: block; color: var(--ink); margin-bottom: 2px; }
 
-    .card-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .timeline-card {
-      margin-top: 22px;
-      padding: 28px;
-    }
-
+    .timeline-card { margin-top: 22px; }
     .timeline {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -554,34 +492,22 @@
     }
 
     .timeline-item {
-      position: relative;
-      padding: 18px;
       min-height: 138px;
+      padding: 18px;
       border-radius: 22px;
-      background: rgba(255, 250, 243, 0.74);
-      border: 1px solid rgba(183, 146, 90, 0.18);
+      background: rgba(255,250,243,0.74);
+      border: 1px solid rgba(183,146,90,0.18);
     }
 
     .timeline-item strong {
       display: block;
-      font-size: 24px;
       color: var(--gold);
-      font-family: "Playfair Display", serif;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 24px;
     }
 
-    .timeline-item span {
-      display: block;
-      margin-top: 8px;
-      color: var(--ink);
-      font-weight: 900;
-    }
-
-    .timeline-item small {
-      display: block;
-      margin-top: 8px;
-      color: var(--muted);
-      line-height: 1.5;
-    }
+    .timeline-item span { display: block; margin-top: 8px; color: var(--ink); font-weight: 900; }
+    .timeline-item small { display: block; margin-top: 8px; color: var(--muted); line-height: 1.5; }
 
     .photo-strip {
       display: grid;
@@ -592,28 +518,25 @@
 
     .photo-tile {
       min-height: 340px;
-      border-radius: 32px;
-      border: 1px solid rgba(183, 146, 90, 0.22);
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.42), rgba(255,255,255,0.06)),
-        radial-gradient(circle at top, rgba(234, 209, 196, 0.8), transparent 16rem),
-        linear-gradient(145deg, rgba(127, 143, 120, 0.20), rgba(183, 146, 90, 0.14));
       display: grid;
       place-items: center;
-      box-shadow: var(--soft-shadow);
-      overflow: hidden;
       position: relative;
+      overflow: hidden;
+      border-radius: 32px;
+      border: 1px solid rgba(183,146,90,0.22);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.42), rgba(255,255,255,0.06)),
+        radial-gradient(circle at top, rgba(234,209,196,0.8), transparent 16rem),
+        linear-gradient(145deg, rgba(127,143,120,0.20), rgba(183,146,90,0.14));
+      box-shadow: var(--soft);
     }
 
-    .photo-tile:nth-child(2) {
-      min-height: 430px;
-    }
-
+    .photo-tile:nth-child(2) { min-height: 430px; }
     .photo-tile::before {
       content: "";
       position: absolute;
       inset: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.62);
+      border: 1px solid rgba(255,255,255,0.62);
       border-radius: 24px;
     }
 
@@ -622,49 +545,29 @@
       z-index: 1;
       width: min(72%, 260px);
       margin: 0;
-      font-family: "Playfair Display", serif;
-      color: rgba(49, 38, 31, 0.72);
+      color: rgba(49,38,31,0.72);
+      font-family: "Playfair Display", Georgia, serif;
       text-align: center;
       font-size: 28px;
       line-height: 1.25;
     }
 
-    .rsvp-grid {
-      display: grid;
-      grid-template-columns: 0.78fr 1.22fr;
-      gap: 24px;
-      align-items: start;
-    }
-
     .note-card {
-      padding: 28px;
       position: sticky;
       top: 96px;
     }
 
-    .note-card h3 {
-      font-size: 38px;
-      margin-bottom: 14px;
-    }
-
-    .note-card p {
-      color: var(--muted);
-      line-height: 1.75;
-      margin: 0 0 16px;
-    }
+    .note-card h3 { font-size: 38px; margin-bottom: 14px; }
+    .note-card p { color: var(--muted); line-height: 1.75; margin: 0 0 16px; }
 
     .mini-note {
       margin-top: 18px;
       padding: 16px;
       border-radius: 20px;
-      background: rgba(127, 143, 120, 0.12);
       color: var(--olive);
-      font-weight: 800;
+      background: rgba(127,143,120,0.12);
+      font-weight: 900;
       line-height: 1.5;
-    }
-
-    .form-card {
-      padding: 28px;
     }
 
     form {
@@ -682,8 +585,8 @@
       display: grid;
       gap: 8px;
       color: var(--ink);
-      font-weight: 900;
       font-size: 14px;
+      font-weight: 900;
     }
 
     input,
@@ -691,27 +594,21 @@
     textarea {
       width: 100%;
       min-height: 50px;
-      border: 1px solid rgba(183, 146, 90, 0.28);
+      border: 1px solid rgba(183,146,90,0.28);
       border-radius: 16px;
       padding: 13px 14px;
-      font: inherit;
       color: var(--ink);
-      background: rgba(255, 250, 243, 0.78);
+      background: rgba(255,250,243,0.78);
+      font: inherit;
       outline: none;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+      transition: 0.2s ease;
     }
 
-    textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
+    textarea { min-height: 120px; resize: vertical; }
+    input:focus, select:focus, textarea:focus {
       border-color: var(--gold);
-      box-shadow: 0 0 0 4px rgba(183, 146, 90, 0.14);
-      background: var(--white);
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(183,146,90,0.14);
     }
 
     .checkbox-group {
@@ -721,16 +618,16 @@
     }
 
     .check-card {
+      min-height: 52px;
       display: flex;
       align-items: center;
       gap: 10px;
-      min-height: 52px;
       padding: 12px;
-      border: 1px solid rgba(183, 146, 90, 0.24);
+      border: 1px solid rgba(183,146,90,0.24);
       border-radius: 16px;
-      background: rgba(255, 250, 243, 0.66);
-      font-weight: 800;
       color: var(--muted);
+      background: rgba(255,250,243,0.66);
+      font-weight: 800;
     }
 
     .check-card input {
@@ -750,24 +647,24 @@
     }
 
     .privacy {
+      max-width: 430px;
       margin: 0;
       color: var(--muted);
-      line-height: 1.55;
       font-size: 13px;
-      max-width: 430px;
+      line-height: 1.55;
     }
 
     .footer {
       padding: 46px 16px 58px;
-      text-align: center;
       color: var(--muted);
+      text-align: center;
     }
 
     .footer .names {
-      font-family: "Playfair Display", serif;
-      color: var(--ink);
-      font-size: 34px;
       margin-bottom: 10px;
+      color: var(--ink);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 34px;
     }
 
     .reveal {
@@ -782,87 +679,25 @@
     }
 
     @media (max-width: 920px) {
-      .nav {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 14px 0;
-      }
-
-      .nav-links {
-        justify-content: flex-start;
-      }
-
-      .nav-links a {
-        padding: 8px 10px;
-      }
-
-      .hero-grid,
-      .event-grid,
-      .rsvp-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        min-height: auto;
-        padding-top: 48px;
-      }
-
-      .hero-card,
-      .monogram-card {
-        min-height: 520px;
-      }
-
-      .timeline,
-      .photo-strip {
-        grid-template-columns: 1fr;
-      }
-
-      .photo-tile,
-      .photo-tile:nth-child(2) {
-        min-height: 280px;
-      }
-
-      .note-card {
-        position: static;
-      }
+      .nav { align-items: flex-start; flex-direction: column; padding: 14px 0; }
+      .nav-links { justify-content: flex-start; }
+      .nav-links a { padding: 8px 10px; }
+      .hero-grid, .event-grid, .rsvp-grid { grid-template-columns: 1fr; }
+      .hero { min-height: auto; padding-top: 48px; }
+      .hero-card, .monogram-card { min-height: 520px; }
+      .timeline, .photo-strip { grid-template-columns: 1fr; }
+      .photo-tile, .photo-tile:nth-child(2) { min-height: 280px; }
+      .note-card { position: static; }
     }
 
     @media (max-width: 620px) {
-      .section {
-        padding: 68px 0;
-      }
-
-      .hero-actions,
-      .card-actions,
-      .form-footer {
-        align-items: stretch;
-        flex-direction: column;
-      }
-
-      .btn {
-        width: 100%;
-      }
-
-      .hero-card,
-      .monogram-card {
-        min-height: 460px;
-      }
-
-      .countdown {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .field-grid,
-      .checkbox-group {
-        grid-template-columns: 1fr;
-      }
-
-      .event-card,
-      .form-card,
-      .note-card,
-      .timeline-card {
-        padding: 22px;
-      }
+      .section { padding: 68px 0; }
+      .actions, .card-actions, .form-footer { align-items: stretch; flex-direction: column; }
+      .btn { width: 100%; }
+      .hero-card, .monogram-card { min-height: 460px; }
+      .countdown { grid-template-columns: repeat(2, 1fr); }
+      .field-grid, .checkbox-group { grid-template-columns: 1fr; }
+      .event-card, .form-card, .note-card, .timeline-card { padding: 22px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -878,7 +713,7 @@
 <body>
   <div class="petals" aria-hidden="true" id="petals"></div>
 
-  <div class="site-shell">
+  <div class="page">
     <header class="topbar">
       <nav class="nav" aria-label="Sayfa menüsü">
         <a class="brand" href="#top" aria-label="Leyla ve Batuhan ana sayfa">
@@ -895,18 +730,16 @@
 
     <main id="top">
       <section class="hero">
-        <div class="hero-grid">
-          <div class="hero-copy reveal">
+        <div class="wrap hero-grid">
+          <div class="reveal">
             <p class="eyebrow">11 & 18 Temmuz 2026</p>
             <h1>Leyla <span class="amp">&</span><br />Batuhan</h1>
-            <p class="hero-lead">
-              Hayatımızın en güzel günlerinde yanımızda olmanızdan mutluluk duyarız. Nikah ve düğün detaylarını, yol tariflerini ve katılım formunu bu sayfada topladık.
-            </p>
+            <p class="lead">Hayatımızın en güzel günlerinde yanımızda olmanızdan mutluluk duyarız. Nikah ve düğün detaylarını, yol tariflerini ve katılım formunu bu sayfada topladık.</p>
             <div class="quote">
               “Uygarlığın, ilerlemenin ve güçlülüğün temeli, aile yaşamıdır.”
               <strong>Mustafa Kemal Atatürk</strong>
             </div>
-            <div class="hero-actions">
+            <div class="actions">
               <a class="btn btn-primary" href="#katilim">Katılım Bildir</a>
               <a class="btn btn-light" href="#konum">Konumları Gör</a>
             </div>
@@ -914,9 +747,9 @@
 
           <aside class="hero-card reveal" aria-label="Düğün geri sayımı">
             <div class="monogram-card">
-              <span class="ornament"></span>
-              <span class="ornament second"></span>
-              <div class="monogram">
+              <span class="ring"></span>
+              <span class="ring second"></span>
+              <div>
                 <div class="letters">L & B</div>
                 <div class="date">Temmuz 2026</div>
               </div>
@@ -931,18 +764,18 @@
         </div>
       </section>
 
-      <section class="section" id="program">
-        <div class="section-heading reveal">
+      <section class="section wrap" id="program">
+        <div class="heading reveal">
           <div class="small">Program</div>
           <h2>İki özel gün, tek davet</h2>
           <p>Resmi nikahımız Edirne’de; düğün kutlamamız ise İstanbul Polonezköy’de gerçekleşecek.</p>
         </div>
 
         <div class="event-grid" id="konum">
-          <article class="event-card reveal">
+          <article class="card event-card reveal">
             <h3>Nikah</h3>
             <div class="event-date">11 Temmuz 2026 Cumartesi</div>
-            <ul class="detail-list">
+            <ul class="details">
               <li><span class="icon">⏱</span><span><b>Saat</b>16:30</span></li>
               <li><span class="icon">📍</span><span><b>Konum</b>Edirne Atatürk Kültür Merkezi</span></li>
               <li><span class="icon">♡</span><span><b>Not</b>Nikah törenimizde sizleri aramızda görmekten mutluluk duyarız.</span></li>
@@ -953,10 +786,10 @@
             </div>
           </article>
 
-          <article class="event-card reveal">
+          <article class="card event-card reveal">
             <h3>Düğün</h3>
             <div class="event-date">18 Temmuz 2026 Cumartesi</div>
-            <ul class="detail-list">
+            <ul class="details">
               <li><span class="icon">⏱</span><span><b>Başlangıç</b>19:00 Kokteyl · 19:30 Nikah · 20:00 Yemek</span></li>
               <li><span class="icon">📍</span><span><b>Konum</b>Senfoni Garden Kır Düğünü, Polonezköy / İstanbul</span></li>
               <li><span class="icon">✦</span><span><b>Devamında</b>Yemek sonrası eğlence</span></li>
@@ -968,7 +801,7 @@
           </article>
         </div>
 
-        <div class="timeline-card reveal">
+        <div class="card timeline-card reveal">
           <div class="timeline" aria-label="Düğün akışı">
             <div class="timeline-item"><strong>19:00</strong><span>Kokteyl</span><small>Karşılama ve ilk buluşma.</small></div>
             <div class="timeline-item"><strong>19:30</strong><span>Nikah</span><small>Düğün alanındaki tören.</small></div>
@@ -978,8 +811,8 @@
         </div>
       </section>
 
-      <section class="section" aria-label="Anı alanı">
-        <div class="section-heading reveal">
+      <section class="section wrap" aria-label="Anı alanı">
+        <div class="heading reveal">
           <div class="small">Anı Köşesi</div>
           <h2>Sade, sıcak ve zarif</h2>
           <p>Bu alanı daha sonra gerçek fotoğraflarınızla da değiştirebiliriz. Şimdilik davetiye stiline uygun monogram ve zarif süslerle yayında.</p>
@@ -991,21 +824,21 @@
         </div>
       </section>
 
-      <section class="section" id="katilim">
-        <div class="section-heading reveal">
+      <section class="section wrap" id="katilim">
+        <div class="heading reveal">
           <div class="small">Katılım</div>
           <h2>Katılım durumunuzu bildirin</h2>
           <p>Davetli sayısını netleştirebilmemiz için formu doldurmanız bizim için çok değerli.</p>
         </div>
 
         <div class="rsvp-grid">
-          <aside class="note-card reveal">
+          <aside class="card note-card reveal">
             <h3>Minik not</h3>
             <p>Formu gönderdikten sonra yanıtınız bize e-posta olarak ulaşacak. Bir değişiklik olursa aynı formu tekrar doldurabilirsiniz.</p>
             <div class="mini-note">Çocuklara iyi geceler. ♡</div>
           </aside>
 
-          <div class="form-card reveal">
+          <div class="card form-card reveal">
             <form action="https://formsubmit.co/info@batuhandegis.com" method="POST">
               <input type="hidden" name="_subject" value="Yeni düğün katılım bildirimi" />
               <input type="hidden" name="_template" value="table" />
@@ -1047,22 +880,10 @@
                 </div>
               </label>
 
-              <div class="field-grid">
-                <label>
-                  Kişi Sayısı
-                  <input type="number" name="Kişi Sayısı" min="1" max="10" placeholder="Örn. 2" required />
-                </label>
-                <label>
-                  Davetli Grubu
-                  <select name="Davetli Grubu">
-                    <option value="" selected>Seçiniz</option>
-                    <option>Gelin tarafı</option>
-                    <option>Damat tarafı</option>
-                    <option>Arkadaş</option>
-                    <option>İş / diğer</option>
-                  </select>
-                </label>
-              </div>
+              <label>
+                Kişi Sayısı
+                <input type="number" name="Kişi Sayısı" min="1" max="10" placeholder="Örn. 2" required />
+              </label>
 
               <label>
                 Notunuz
@@ -1070,7 +891,7 @@
               </label>
 
               <div class="form-footer">
-                <p class="privacy">Yanıtınız yalnızca katılım takibi için kullanılacaktır. İlk gönderimde e-posta doğrulaması istenebilir.</p>
+                <p class="privacy">Yanıtınız yalnızca katılım takibi için kullanılacaktır.</p>
                 <button class="btn btn-primary" type="submit">Formu Gönder</button>
               </div>
             </form>
@@ -1100,7 +921,6 @@
       const day = 24 * 60 * 60 * 1000;
       const hour = 60 * 60 * 1000;
       const minute = 60 * 1000;
-
       units.days.textContent = Math.floor(diff / day);
       units.hours.textContent = Math.floor((diff % day) / hour).toString().padStart(2, '0');
       units.minutes.textContent = Math.floor((diff % hour) / minute).toString().padStart(2, '0');
@@ -1124,7 +944,6 @@
 
     const petals = document.getElementById('petals');
     const petalCount = window.matchMedia('(max-width: 620px)').matches ? 12 : 22;
-
     for (let i = 0; i < petalCount; i += 1) {
       const petal = document.createElement('span');
       petal.className = 'petal';
