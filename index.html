@@ -1,162 +1,1140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
   <meta charset="UTF-8" />
-  <title>Batuhan Degis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f7efe5" />
+  <meta name="description" content="Leyla & Batuhan düğün etkinlik sayfası: nikah, düğün, yol tarifi ve katılım formu." />
+  <meta property="og:title" content="Leyla & Batuhan" />
+  <meta property="og:description" content="Nikah ve düğün bilgilerimiz, yol tarifi ve katılım formu." />
+  <meta property="og:type" content="website" />
+  <title>Leyla & Batuhan | Düğün</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+    :root {
+      --paper: #fffaf3;
+      --champagne: #f7efe5;
+      --blush: #ead1c4;
+      --rose: #b98473;
+      --sage: #7f8f78;
+      --olive: #55634d;
+      --gold: #b7925a;
+      --ink: #31261f;
+      --muted: #756b62;
+      --white: #ffffff;
+      --shadow: 0 22px 70px rgba(49, 38, 31, 0.14);
+      --soft-shadow: 0 14px 38px rgba(49, 38, 31, 0.09);
+      --radius: 28px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       margin: 0;
-      background-color: black;
-      color: #00ff00;
-      font-family: 'Press Start 2P', monospace;
-      overflow: hidden;
+      color: var(--ink);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(234, 209, 196, 0.55), transparent 34rem),
+        radial-gradient(circle at 85% 15%, rgba(127, 143, 120, 0.22), transparent 28rem),
+        linear-gradient(180deg, var(--champagne), var(--paper) 42%, #f4ece1 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    .matrix {
+    body::before {
+      content: "";
       position: fixed;
-      width: 100%;
-      height: 100%;
-      background: black;
-      z-index: -1;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.28;
+      background-image:
+        linear-gradient(rgba(183, 146, 90, 0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(183, 146, 90, 0.10) 1px, transparent 1px);
+      background-size: 72px 72px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,0.75), transparent 62%);
+    }
+
+    a { color: inherit; }
+
+    .petals {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
       overflow: hidden;
-      top: 0;
-      left: 0;
-    }
-
-    canvas {
-      display: block;
-    }
-
-    .centered {
-      position: relative;
       z-index: 1;
-      text-align: center;
-      padding-top: 15vh; /* viewport height */
-      max-width: 80vw; /* viewport width */
-      margin: 0 auto;
-      color: #00ff00;
     }
 
-    h1 {
-      font-size: clamp(16px, 2.5vw, 24px);
+    .petal {
+      position: absolute;
+      top: -10vh;
+      width: 12px;
+      height: 18px;
+      border-radius: 80% 0 80% 0;
+      background: rgba(185, 132, 115, 0.32);
+      animation: fall linear infinite;
+      transform: rotate(18deg);
+    }
+
+    @keyframes fall {
+      to {
+        transform: translate3d(var(--drift), 112vh, 0) rotate(310deg);
+      }
+    }
+
+    .site-shell {
+      position: relative;
+      z-index: 2;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(255, 250, 243, 0.72);
+      border-bottom: 1px solid rgba(183, 146, 90, 0.18);
+    }
+
+    .nav {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(20px, 3vw, 28px);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(183, 146, 90, 0.55);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      color: var(--gold);
+      background: rgba(255, 255, 255, 0.55);
+      box-shadow: var(--soft-shadow);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--muted);
+      padding: 10px 12px;
+      border-radius: 999px;
+      transition: 0.25s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--ink);
+      background: rgba(183, 146, 90, 0.12);
+    }
+
+    .section {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 90px 0;
+    }
+
+    .hero {
+      min-height: calc(100vh - 70px);
+      display: grid;
+      place-items: center;
+      padding: 70px 0 80px;
+    }
+
+    .hero-grid {
+      width: min(1120px, calc(100% - 32px));
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 38px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 18px;
+      padding: 9px 14px;
+      border: 1px solid rgba(183, 146, 90, 0.28);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.52);
+      color: var(--olive);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      box-shadow: var(--soft-shadow);
+    }
+
+    h1, h2, h3 {
+      font-family: "Playfair Display", Georgia, serif;
+      line-height: 1.02;
       margin: 0;
     }
 
-    .tagline {
-      font-size: clamp(12px, 1.5vw, 14px);
-      margin-top: 20px;
-      line-height: 1.4;
-      color: #00ff00;
+    h1 {
+      font-size: clamp(58px, 10.5vw, 132px);
+      letter-spacing: -0.055em;
+      color: var(--ink);
     }
 
-    .heart {
-      font-size: clamp(40px, 6vw, 60px);
-      color: #00ff00; /* neon green */
-      text-shadow:
-        0 0 5px #00ff00,
-        0 0 10px #00ff00,
-        0 0 20px #00ff00,
-        0 0 40px #00ff00;
-      margin-top: 30px;
-      user-select: none;
-    }
-
-    a.contact-link {
+    .amp {
       display: inline-block;
-      margin-top: 40px;
-      font-size: clamp(14px, 1.5vw, 18px);
-      color: #00ff00;
-      text-decoration: none;
-      border: 1.5px solid #00ff00;
-      padding: 10px 20px;
-      border-radius: 5px;
-      transition: background-color 0.3s, color 0.3s;
-      cursor: pointer;
-      user-select: none;
+      color: var(--gold);
+      font-style: italic;
+      transform: translateY(-0.04em);
     }
-    a.contact-link:hover {
-      background-color: #00ff00;
-      color: black;
+
+    .hero-lead {
+      max-width: 660px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: clamp(17px, 2.5vw, 22px);
+      line-height: 1.7;
+    }
+
+    .quote {
+      margin: 28px 0 0;
+      padding: 18px 20px;
+      border-left: 3px solid var(--gold);
+      color: var(--olive);
+      background: rgba(255, 255, 255, 0.48);
+      border-radius: 0 18px 18px 0;
+      box-shadow: var(--soft-shadow);
+      max-width: 620px;
+    }
+
+    .quote strong {
+      display: block;
+      margin-top: 8px;
+      color: var(--gold);
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(183, 146, 90, 0.34);
+      text-decoration: none;
+      font-weight: 800;
+      box-shadow: var(--soft-shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 42px rgba(49, 38, 31, 0.13);
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: var(--white);
+      border-color: var(--ink);
+    }
+
+    .btn-light {
+      background: rgba(255, 255, 255, 0.66);
+      color: var(--ink);
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--white);
+      border-color: var(--gold);
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 620px;
+      border-radius: 42px;
+      padding: 24px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.80), rgba(255,250,243,0.62)),
+        radial-gradient(circle at 30% 20%, rgba(234, 209, 196, 0.78), transparent 20rem);
+      border: 1px solid rgba(183, 146, 90, 0.22);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-card::before,
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(183, 146, 90, 0.28);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .hero-card::before {
+      width: 420px;
+      height: 420px;
+      top: -160px;
+      right: -150px;
+    }
+
+    .hero-card::after {
+      width: 260px;
+      height: 260px;
+      bottom: -96px;
+      left: -92px;
+    }
+
+    .monogram-card {
+      position: relative;
+      height: 100%;
+      min-height: 572px;
+      border-radius: 32px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      background:
+        linear-gradient(rgba(49, 38, 31, 0.05), rgba(49, 38, 31, 0.05)),
+        radial-gradient(circle, rgba(255,255,255,0.74) 0 32%, transparent 33%),
+        linear-gradient(135deg, rgba(127, 143, 120, 0.24), rgba(234, 209, 196, 0.54));
+      overflow: hidden;
+    }
+
+    .ornament {
+      position: absolute;
+      width: 86%;
+      height: 86%;
+      border: 1px solid rgba(183, 146, 90, 0.38);
+      border-radius: 48% 52% 50% 50%;
+      animation: breathe 7s ease-in-out infinite;
+    }
+
+    .ornament.second {
+      width: 72%;
+      height: 72%;
+      animation-delay: -2.4s;
+      transform: rotate(18deg);
+    }
+
+    @keyframes breathe {
+      50% { transform: scale(0.965) rotate(5deg); }
+    }
+
+    .monogram {
+      position: relative;
+      z-index: 2;
+    }
+
+    .monogram .letters {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(78px, 10vw, 132px);
+      color: var(--gold);
+      letter-spacing: -0.06em;
+      line-height: 0.9;
+    }
+
+    .monogram .date {
+      margin-top: 18px;
+      color: var(--olive);
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    .countdown {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      z-index: 3;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .count-box {
+      padding: 14px 8px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(183, 146, 90, 0.20);
+      text-align: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .count-box strong {
+      display: block;
+      font-size: clamp(22px, 4vw, 34px);
+      font-family: "Playfair Display", serif;
+      color: var(--ink);
+    }
+
+    .count-box span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .section-heading .small {
+      color: var(--gold);
+      font-weight: 900;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 13px;
+      margin-bottom: 12px;
+    }
+
+    h2 {
+      font-size: clamp(38px, 6vw, 70px);
+      letter-spacing: -0.035em;
+    }
+
+    .section-heading p {
+      max-width: 680px;
+      margin: 18px auto 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    .event-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .event-card,
+    .form-card,
+    .timeline-card,
+    .note-card {
+      border: 1px solid rgba(183, 146, 90, 0.22);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.66);
+      box-shadow: var(--soft-shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .event-card {
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .event-card::after {
+      content: "";
+      position: absolute;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background: rgba(234, 209, 196, 0.36);
+      right: -64px;
+      top: -64px;
+    }
+
+    .event-card h3 {
+      font-size: clamp(30px, 4vw, 46px);
+      position: relative;
+      z-index: 1;
+    }
+
+    .event-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 18px 0 22px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      color: var(--olive);
+      background: rgba(127, 143, 120, 0.12);
+      font-weight: 900;
+      letter-spacing: 0.02em;
+    }
+
+    .detail-list {
+      display: grid;
+      gap: 14px;
+      margin: 0 0 24px;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .detail-list li {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(183, 146, 90, 0.14);
+      color: var(--gold);
+      font-size: 16px;
+    }
+
+    .detail-list b {
+      display: block;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+
+    .card-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .timeline-card {
+      margin-top: 22px;
+      padding: 28px;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding: 18px;
+      min-height: 138px;
+      border-radius: 22px;
+      background: rgba(255, 250, 243, 0.74);
+      border: 1px solid rgba(183, 146, 90, 0.18);
+    }
+
+    .timeline-item strong {
+      display: block;
+      font-size: 24px;
+      color: var(--gold);
+      font-family: "Playfair Display", serif;
+    }
+
+    .timeline-item span {
+      display: block;
+      margin-top: 8px;
+      color: var(--ink);
+      font-weight: 900;
+    }
+
+    .timeline-item small {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .photo-strip {
+      display: grid;
+      grid-template-columns: 0.95fr 1.1fr 0.95fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .photo-tile {
+      min-height: 340px;
+      border-radius: 32px;
+      border: 1px solid rgba(183, 146, 90, 0.22);
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.42), rgba(255,255,255,0.06)),
+        radial-gradient(circle at top, rgba(234, 209, 196, 0.8), transparent 16rem),
+        linear-gradient(145deg, rgba(127, 143, 120, 0.20), rgba(183, 146, 90, 0.14));
+      display: grid;
+      place-items: center;
+      box-shadow: var(--soft-shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .photo-tile:nth-child(2) {
+      min-height: 430px;
+    }
+
+    .photo-tile::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.62);
+      border-radius: 24px;
+    }
+
+    .photo-tile p {
+      position: relative;
+      z-index: 1;
+      width: min(72%, 260px);
+      margin: 0;
+      font-family: "Playfair Display", serif;
+      color: rgba(49, 38, 31, 0.72);
+      text-align: center;
+      font-size: 28px;
+      line-height: 1.25;
+    }
+
+    .rsvp-grid {
+      display: grid;
+      grid-template-columns: 0.78fr 1.22fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .note-card {
+      padding: 28px;
+      position: sticky;
+      top: 96px;
+    }
+
+    .note-card h3 {
+      font-size: 38px;
+      margin-bottom: 14px;
+    }
+
+    .note-card p {
+      color: var(--muted);
+      line-height: 1.75;
+      margin: 0 0 16px;
+    }
+
+    .mini-note {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(127, 143, 120, 0.12);
+      color: var(--olive);
+      font-weight: 800;
+      line-height: 1.5;
+    }
+
+    .form-card {
+      padding: 28px;
+    }
+
+    form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    label {
+      display: grid;
+      gap: 8px;
+      color: var(--ink);
+      font-weight: 900;
+      font-size: 14px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      min-height: 50px;
+      border: 1px solid rgba(183, 146, 90, 0.28);
+      border-radius: 16px;
+      padding: 13px 14px;
+      font: inherit;
+      color: var(--ink);
+      background: rgba(255, 250, 243, 0.78);
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(183, 146, 90, 0.14);
+      background: var(--white);
+    }
+
+    .checkbox-group {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .check-card {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 12px;
+      border: 1px solid rgba(183, 146, 90, 0.24);
+      border-radius: 16px;
+      background: rgba(255, 250, 243, 0.66);
+      font-weight: 800;
+      color: var(--muted);
+    }
+
+    .check-card input {
+      width: 18px;
+      height: 18px;
+      min-height: auto;
+      accent-color: var(--gold);
+    }
+
+    .form-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .privacy {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 13px;
+      max-width: 430px;
+    }
+
+    .footer {
+      padding: 46px 16px 58px;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .footer .names {
+      font-family: "Playfair Display", serif;
+      color: var(--ink);
+      font-size: 34px;
+      margin-bottom: 10px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 920px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 14px 0;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .nav-links a {
+        padding: 8px 10px;
+      }
+
+      .hero-grid,
+      .event-grid,
+      .rsvp-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-top: 48px;
+      }
+
+      .hero-card,
+      .monogram-card {
+        min-height: 520px;
+      }
+
+      .timeline,
+      .photo-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-tile,
+      .photo-tile:nth-child(2) {
+        min-height: 280px;
+      }
+
+      .note-card {
+        position: static;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .section {
+        padding: 68px 0;
+      }
+
+      .hero-actions,
+      .card-actions,
+      .form-footer {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-card,
+      .monogram-card {
+        min-height: 460px;
+      }
+
+      .countdown {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .field-grid,
+      .checkbox-group {
+        grid-template-columns: 1fr;
+      }
+
+      .event-card,
+      .form-card,
+      .note-card,
+      .timeline-card {
+        padding: 22px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.001ms !important;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="matrix">
-    <canvas id="matrixCanvas"></canvas>
-  </div>
+  <div class="petals" aria-hidden="true" id="petals"></div>
 
-  <div class="centered">
-    <h1>Batuhan Degis, MD</h1>
-    <div class="tagline">
-      This site is a work in progress! <br>
-      Soon, I’ll be sharing personal stories, goals, and exciting updates about AI in medicine.<br>
-      Stay tuned—and remember, kindness is contagious!
-    </div>
-    <div class="heart">❤️</div>
+  <div class="site-shell">
+    <header class="topbar">
+      <nav class="nav" aria-label="Sayfa menüsü">
+        <a class="brand" href="#top" aria-label="Leyla ve Batuhan ana sayfa">
+          <span class="brand-mark">♡</span>
+          <span>Leyla & Batuhan</span>
+        </a>
+        <div class="nav-links">
+          <a href="#program">Program</a>
+          <a href="#konum">Konumlar</a>
+          <a href="#katilim">Katılım</a>
+        </div>
+      </nav>
+    </header>
 
-    <a href="mailto:info@batuhandegis.com" class="contact-link" aria-label="Contact via email">Contact</a>
+    <main id="top">
+      <section class="hero">
+        <div class="hero-grid">
+          <div class="hero-copy reveal">
+            <p class="eyebrow">11 & 18 Temmuz 2026</p>
+            <h1>Leyla <span class="amp">&</span><br />Batuhan</h1>
+            <p class="hero-lead">
+              Hayatımızın en güzel günlerinde yanımızda olmanızdan mutluluk duyarız. Nikah ve düğün detaylarını, yol tariflerini ve katılım formunu bu sayfada topladık.
+            </p>
+            <div class="quote">
+              “Uygarlığın, ilerlemenin ve güçlülüğün temeli, aile yaşamıdır.”
+              <strong>Mustafa Kemal Atatürk</strong>
+            </div>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#katilim">Katılım Bildir</a>
+              <a class="btn btn-light" href="#konum">Konumları Gör</a>
+            </div>
+          </div>
+
+          <aside class="hero-card reveal" aria-label="Düğün geri sayımı">
+            <div class="monogram-card">
+              <span class="ornament"></span>
+              <span class="ornament second"></span>
+              <div class="monogram">
+                <div class="letters">L & B</div>
+                <div class="date">Temmuz 2026</div>
+              </div>
+            </div>
+            <div class="countdown" id="countdown">
+              <div class="count-box"><strong id="days">--</strong><span>Gün</span></div>
+              <div class="count-box"><strong id="hours">--</strong><span>Saat</span></div>
+              <div class="count-box"><strong id="minutes">--</strong><span>Dakika</span></div>
+              <div class="count-box"><strong id="seconds">--</strong><span>Saniye</span></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section" id="program">
+        <div class="section-heading reveal">
+          <div class="small">Program</div>
+          <h2>İki özel gün, tek davet</h2>
+          <p>Resmi nikahımız Edirne’de; düğün kutlamamız ise İstanbul Polonezköy’de gerçekleşecek.</p>
+        </div>
+
+        <div class="event-grid" id="konum">
+          <article class="event-card reveal">
+            <h3>Nikah</h3>
+            <div class="event-date">11 Temmuz 2026 Cumartesi</div>
+            <ul class="detail-list">
+              <li><span class="icon">⏱</span><span><b>Saat</b>16:30</span></li>
+              <li><span class="icon">📍</span><span><b>Konum</b>Edirne Atatürk Kültür Merkezi</span></li>
+              <li><span class="icon">♡</span><span><b>Not</b>Nikah törenimizde sizleri aramızda görmekten mutluluk duyarız.</span></li>
+            </ul>
+            <div class="card-actions">
+              <a class="btn btn-gold" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Edirne%20Atat%C3%BCrk%20K%C3%BClt%C3%BCr%20Merkezi">Yol Tarifi</a>
+              <a class="btn btn-light" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Leyla%20%26%20Batuhan%20Nikah&dates=20260711T133000Z/20260711T143000Z&details=Leyla%20%26%20Batuhan%20nikah%20t%C3%B6reni&location=Edirne%20Atat%C3%BCrk%20K%C3%BClt%C3%BCr%20Merkezi">Takvime Ekle</a>
+            </div>
+          </article>
+
+          <article class="event-card reveal">
+            <h3>Düğün</h3>
+            <div class="event-date">18 Temmuz 2026 Cumartesi</div>
+            <ul class="detail-list">
+              <li><span class="icon">⏱</span><span><b>Başlangıç</b>19:00 Kokteyl · 19:30 Nikah · 20:00 Yemek</span></li>
+              <li><span class="icon">📍</span><span><b>Konum</b>Senfoni Garden Kır Düğünü, Polonezköy / İstanbul</span></li>
+              <li><span class="icon">✦</span><span><b>Devamında</b>Yemek sonrası eğlence</span></li>
+            </ul>
+            <div class="card-actions">
+              <a class="btn btn-gold" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Senfoni%20Garden%20K%C4%B1r%20D%C3%BC%C4%9F%C3%BCn%C3%BC%20Polonezk%C3%B6y%20%C4%B0stanbul">Yol Tarifi</a>
+              <a class="btn btn-light" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Leyla%20%26%20Batuhan%20D%C3%BC%C4%9F%C3%BCn&dates=20260718T160000Z/20260718T210000Z&details=19%3A00%20Kokteyl%2C%2019%3A30%20Nikah%2C%2020%3A00%20Yemek%20ve%20e%C4%9Flence&location=Senfoni%20Garden%20K%C4%B1r%20D%C3%BC%C4%9F%C3%BCn%C3%BC%2C%20Polonezk%C3%B6y%2C%20%C4%B0stanbul">Takvime Ekle</a>
+            </div>
+          </article>
+        </div>
+
+        <div class="timeline-card reveal">
+          <div class="timeline" aria-label="Düğün akışı">
+            <div class="timeline-item"><strong>19:00</strong><span>Kokteyl</span><small>Karşılama ve ilk buluşma.</small></div>
+            <div class="timeline-item"><strong>19:30</strong><span>Nikah</span><small>Düğün alanındaki tören.</small></div>
+            <div class="timeline-item"><strong>20:00</strong><span>Yemek</span><small>Masalarda buluşuyoruz.</small></div>
+            <div class="timeline-item"><strong>Sonra</strong><span>Eğlence</span><small>Gecenin devamında piste bekleriz.</small></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-label="Anı alanı">
+        <div class="section-heading reveal">
+          <div class="small">Anı Köşesi</div>
+          <h2>Sade, sıcak ve zarif</h2>
+          <p>Bu alanı daha sonra gerçek fotoğraflarınızla da değiştirebiliriz. Şimdilik davetiye stiline uygun monogram ve zarif süslerle yayında.</p>
+        </div>
+        <div class="photo-strip reveal">
+          <div class="photo-tile"><p>11 Temmuz<br />Edirne</p></div>
+          <div class="photo-tile"><p>Leyla<br /><span class="amp">&</span><br />Batuhan</p></div>
+          <div class="photo-tile"><p>18 Temmuz<br />İstanbul</p></div>
+        </div>
+      </section>
+
+      <section class="section" id="katilim">
+        <div class="section-heading reveal">
+          <div class="small">Katılım</div>
+          <h2>Katılım durumunuzu bildirin</h2>
+          <p>Davetli sayısını netleştirebilmemiz için formu doldurmanız bizim için çok değerli.</p>
+        </div>
+
+        <div class="rsvp-grid">
+          <aside class="note-card reveal">
+            <h3>Minik not</h3>
+            <p>Formu gönderdikten sonra yanıtınız bize e-posta olarak ulaşacak. Bir değişiklik olursa aynı formu tekrar doldurabilirsiniz.</p>
+            <div class="mini-note">Çocuklara iyi geceler. ♡</div>
+          </aside>
+
+          <div class="form-card reveal">
+            <form action="https://formsubmit.co/info@batuhandegis.com" method="POST">
+              <input type="hidden" name="_subject" value="Yeni düğün katılım bildirimi" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_next" value="https://batuhandegis.com/tesekkurler.html" />
+              <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
+              <div class="field-grid">
+                <label>
+                  Ad Soyad
+                  <input type="text" name="Ad Soyad" placeholder="Adınız Soyadınız" required />
+                </label>
+                <label>
+                  Telefon
+                  <input type="tel" name="Telefon" placeholder="05xx xxx xx xx" />
+                </label>
+              </div>
+
+              <div class="field-grid">
+                <label>
+                  E-posta
+                  <input type="email" name="_replyto" placeholder="ornek@mail.com" />
+                </label>
+                <label>
+                  Katılım Durumu
+                  <select name="Katılım Durumu" required>
+                    <option value="" selected disabled>Seçiniz</option>
+                    <option>Katılıyorum</option>
+                    <option>Katılamıyorum</option>
+                    <option>Henüz net değil</option>
+                  </select>
+                </label>
+              </div>
+
+              <label>
+                Hangi etkinliğe katılacaksınız?
+                <div class="checkbox-group">
+                  <span class="check-card"><input type="checkbox" name="Etkinlik" value="Nikah - Edirne" /> Nikah - Edirne</span>
+                  <span class="check-card"><input type="checkbox" name="Etkinlik" value="Düğün - İstanbul" /> Düğün - İstanbul</span>
+                </div>
+              </label>
+
+              <div class="field-grid">
+                <label>
+                  Kişi Sayısı
+                  <input type="number" name="Kişi Sayısı" min="1" max="10" placeholder="Örn. 2" required />
+                </label>
+                <label>
+                  Davetli Grubu
+                  <select name="Davetli Grubu">
+                    <option value="" selected>Seçiniz</option>
+                    <option>Gelin tarafı</option>
+                    <option>Damat tarafı</option>
+                    <option>Arkadaş</option>
+                    <option>İş / diğer</option>
+                  </select>
+                </label>
+              </div>
+
+              <label>
+                Notunuz
+                <textarea name="Not" placeholder="Varsa iletmek istediğiniz not..."></textarea>
+              </label>
+
+              <div class="form-footer">
+                <p class="privacy">Yanıtınız yalnızca katılım takibi için kullanılacaktır. İlk gönderimde e-posta doğrulaması istenebilir.</p>
+                <button class="btn btn-primary" type="submit">Formu Gönder</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="names">Leyla & Batuhan</div>
+      <div>Güzel günümüzde yanımızda olmanız dileğiyle.</div>
+    </footer>
   </div>
 
   <script>
-    const canvas = document.getElementById("matrixCanvas");
-    const ctx = canvas.getContext("2d");
+    const target = new Date('2026-07-18T19:00:00+03:00').getTime();
+    const units = {
+      days: document.getElementById('days'),
+      hours: document.getElementById('hours'),
+      minutes: document.getElementById('minutes'),
+      seconds: document.getElementById('seconds')
+    };
 
-    let fontSize;
-    let columns;
-    let drops;
+    function updateCountdown() {
+      const now = Date.now();
+      const diff = Math.max(0, target - now);
+      const day = 24 * 60 * 60 * 1000;
+      const hour = 60 * 60 * 1000;
+      const minute = 60 * 1000;
 
-    function resizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      units.days.textContent = Math.floor(diff / day);
+      units.hours.textContent = Math.floor((diff % day) / hour).toString().padStart(2, '0');
+      units.minutes.textContent = Math.floor((diff % hour) / minute).toString().padStart(2, '0');
+      units.seconds.textContent = Math.floor((diff % minute) / 1000).toString().padStart(2, '0');
     }
 
-    function updateFontSize() {
-      // Dinamik font boyutu, minimum 8px, ekran genişliğine göre artar
-      fontSize = Math.min(Math.max(8, window.innerWidth / 100), 16);
-      columns = Math.floor(canvas.width / fontSize);
-      drops = Array(columns).fill(1);
-    }
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
 
-    function drawMatrix() {
-      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = "#0F0";
-      ctx.font = fontSize + "px monospace";
-
-      const letters = "01010101010101";
-
-      for (let i = 0; i < drops.length; i++) {
-        const text = letters.charAt(Math.floor(Math.random() * letters.length));
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
+    const revealItems = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
         }
+      });
+    }, { threshold: 0.14 });
 
-        drops[i]++;
-      }
+    revealItems.forEach((item) => observer.observe(item));
+
+    const petals = document.getElementById('petals');
+    const petalCount = window.matchMedia('(max-width: 620px)').matches ? 12 : 22;
+
+    for (let i = 0; i < petalCount; i += 1) {
+      const petal = document.createElement('span');
+      petal.className = 'petal';
+      petal.style.left = `${Math.random() * 100}%`;
+      petal.style.animationDuration = `${9 + Math.random() * 9}s`;
+      petal.style.animationDelay = `${Math.random() * 9}s`;
+      petal.style.opacity = `${0.18 + Math.random() * 0.42}`;
+      petal.style.setProperty('--drift', `${-70 + Math.random() * 140}px`);
+      petals.appendChild(petal);
     }
-
-    function loop() {
-      drawMatrix();
-      requestAnimationFrame(loop);
-    }
-
-    function init() {
-      resizeCanvas();
-      updateFontSize();
-      loop();
-    }
-
-    window.addEventListener('resize', () => {
-      resizeCanvas();
-      updateFontSize();
-    });
-
-    init();
   </script>
 </body>
 </html>
