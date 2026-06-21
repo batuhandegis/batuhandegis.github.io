@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f7efe5" />
+  <title>Teşekkürler | Leyla & Batuhan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #fffaf3;
+      --champagne: #f7efe5;
+      --blush: #ead1c4;
+      --sage: #7f8f78;
+      --gold: #b7925a;
+      --ink: #31261f;
+      --muted: #756b62;
+      --shadow: 0 22px 70px rgba(49, 38, 31, 0.14);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      color: var(--ink);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(234, 209, 196, 0.62), transparent 34rem),
+        radial-gradient(circle at 90% 10%, rgba(127, 143, 120, 0.20), transparent 28rem),
+        linear-gradient(180deg, var(--champagne), var(--paper));
+    }
+
+    .card {
+      width: min(680px, 100%);
+      padding: clamp(34px, 8vw, 68px);
+      border-radius: 34px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.68);
+      border: 1px solid rgba(183, 146, 90, 0.24);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      width: 340px;
+      height: 340px;
+      border: 1px solid rgba(183, 146, 90, 0.22);
+      border-radius: 50%;
+      top: -150px;
+      right: -120px;
+    }
+
+    .heart {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 24px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(183, 146, 90, 0.14);
+      color: var(--gold);
+      font-size: 34px;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(44px, 8vw, 76px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    p {
+      position: relative;
+      z-index: 1;
+      margin: 20px auto 0;
+      max-width: 520px;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 18px;
+    }
+
+    .btn {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 30px;
+      min-height: 50px;
+      padding: 14px 22px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: white;
+      text-decoration: none;
+      font-weight: 800;
+      box-shadow: 0 14px 38px rgba(49, 38, 31, 0.12);
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="heart">♡</div>
+    <h1>Teşekkürler</h1>
+    <p>Katılım bildiriminiz bize ulaştı. Güzel günümüzde sizi aramızda görmekten mutluluk duyacağız.</p>
+    <a class="btn" href="/">Sayfaya Dön</a>
+  </main>
+</body>
+</html>
