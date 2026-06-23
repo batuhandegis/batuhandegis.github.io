@@ -18,7 +18,6 @@
     :root {
       --paper: #fbf8ee;
       --cream: #eef4e8;
-      --leaf: #9faf78;
       --moss: #74864d;
       --sage: #b8c9a1;
       --forest: #2f4a32;
@@ -53,7 +52,7 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      opacity: 0.18;
+      opacity: 0.16;
       background-image:
         radial-gradient(circle at 10px 10px, rgba(47,74,50,0.18) 1.4px, transparent 1.6px),
         linear-gradient(rgba(47,74,50,0.07) 1px, transparent 1px),
@@ -70,24 +69,24 @@
     @keyframes fall { to { transform: translate3d(var(--drift), 112vh, 0) rotate(330deg); } }
 
     .page { position: relative; z-index: 2; }
-    .topbar { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid rgba(116,134,77,0.18); background: rgba(251,248,238,0.76); backdrop-filter: blur(18px); }
+    .topbar { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid rgba(116,134,77,0.18); background: rgba(251,248,238,0.78); backdrop-filter: blur(18px); }
     .nav, .wrap { width: min(1060px, calc(100% - 32px)); margin: 0 auto; }
     .nav { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
     .brand { display: flex; align-items: center; gap: 10px; font-family: "Great Vibes", "Cormorant Garamond", Georgia, serif; font-size: clamp(30px, 4vw, 42px); font-weight: 400; text-decoration: none; letter-spacing: 0.01em; white-space: nowrap; color: var(--forest); }
-    .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; border: 1px solid rgba(116,134,77,0.38); color: var(--forest); background: rgba(255,255,255,0.62); box-shadow: var(--soft); font-family: "Cormorant Garamond", Georgia, serif; font-size: 20px; }
+    .brand-mark { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; border: 1px solid rgba(116,134,77,0.38); color: var(--forest); background: rgba(255,255,255,0.62); box-shadow: var(--soft); font-family: "Cormorant Garamond", Georgia, serif; font-size: 15px; font-weight: 700; letter-spacing: -0.02em; }
     .nav-links { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
     .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 800; padding: 10px 12px; border-radius: 999px; transition: 0.25s ease; }
     .nav-links a:hover { color: var(--forest); background: rgba(116,134,77,0.13); }
 
-    .hero { min-height: calc(100vh - 70px); display: grid; align-items: center; padding: 72px 0 86px; }
-    .hero-grid { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 38px; align-items: center; }
-    .eyebrow { display: inline-flex; margin: 0 0 18px; padding: 9px 14px; border-radius: 999px; color: var(--forest); background: rgba(255,255,255,0.62); border: 1px solid rgba(116,134,77,0.26); box-shadow: var(--soft); font-size: 13px; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; }
+    .hero { min-height: calc(100vh - 70px); display: grid; align-items: center; padding: 72px 0 70px; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 40px; align-items: center; }
+    .eyebrow { display: inline-flex; margin: 0 0 18px; padding: 9px 14px; border-radius: 999px; color: var(--forest); background: rgba(255,255,255,0.68); border: 1px solid rgba(116,134,77,0.26); box-shadow: var(--soft); font-size: 13px; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; }
     h1, h2, h3 { margin: 0; line-height: 1.02; color: var(--deep); }
     h1 { font-family: "Great Vibes", "Cormorant Garamond", Georgia, serif; font-size: clamp(78px, 13vw, 150px); font-weight: 400; letter-spacing: 0.01em; line-height: 0.92; }
     h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; }
     .amp { color: var(--moss); font-style: normal; }
     .lead { max-width: 660px; margin: 24px 0 0; color: var(--muted); font-size: clamp(17px, 2.5vw, 22px); line-height: 1.7; }
-    .quote { max-width: 620px; margin: 28px 0 0; padding: 18px 20px; border-left: 3px solid var(--moss); border-radius: 0 18px 18px 0; color: var(--forest); background: rgba(255,255,255,0.56); box-shadow: var(--soft); line-height: 1.6; }
+    .quote { max-width: 620px; margin: 28px 0 0; padding: 18px 20px; border-left: 3px solid var(--moss); border-radius: 0 18px 18px 0; color: var(--forest); background: rgba(255,255,255,0.58); box-shadow: var(--soft); line-height: 1.6; }
     .quote strong { display: block; margin-top: 8px; color: var(--earth); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
     .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
     .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 14px 20px; border-radius: 999px; border: 1px solid rgba(116,134,77,0.34); text-decoration: none; font: inherit; font-weight: 900; cursor: pointer; box-shadow: var(--soft); transition: transform 0.25s ease, box-shadow 0.25s ease; }
@@ -95,41 +94,46 @@
     .btn-primary { background: var(--forest); color: #fff; border-color: var(--forest); }
     .btn-light { background: rgba(255,255,255,0.72); color: var(--forest); }
 
-    .hero-card { min-height: 610px; position: relative; padding: 24px; border-radius: 42px; border: 1px solid rgba(116,134,77,0.24); background: linear-gradient(145deg, rgba(255,255,255,0.84), rgba(238,244,232,0.66)), radial-gradient(circle at 30% 20%, rgba(184,201,161,0.86), transparent 20rem); box-shadow: var(--shadow); overflow: hidden; }
-    .hero-card::before, .hero-card::after { content: ""; position: absolute; border: 1px solid rgba(116,134,77,0.30); border-radius: 50%; pointer-events: none; }
-    .hero-card::before { width: 420px; height: 420px; top: -160px; right: -150px; }
-    .hero-card::after { width: 260px; height: 260px; bottom: -96px; left: -92px; }
-    .monogram-card { min-height: 562px; height: 100%; display: grid; place-items: center; text-align: center; border-radius: 32px; background: linear-gradient(rgba(32,53,35,0.04), rgba(32,53,35,0.04)), radial-gradient(circle, rgba(255,255,255,0.74) 0 31%, transparent 32%), linear-gradient(135deg, rgba(116,134,77,0.34), rgba(184,201,161,0.60)); overflow: hidden; position: relative; }
-    .monogram-card::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle at 20% 22%, rgba(47,74,50,0.12) 0 2px, transparent 3px), radial-gradient(circle at 78% 70%, rgba(183,146,90,0.10) 0 2px, transparent 3px); background-size: 46px 46px, 58px 58px; }
-    .ring { position: absolute; width: 86%; height: 86%; border: 1px solid rgba(255,255,255,0.62); border-radius: 48% 52% 50% 50%; animation: breathe 7s ease-in-out infinite; }
-    .ring.second { width: 72%; height: 72%; animation-delay: -2.4s; transform: rotate(18deg); }
-    @keyframes breathe { 50% { transform: scale(0.965) rotate(5deg); } }
-    .letters { position: relative; z-index: 2; font-family: "Great Vibes", "Cormorant Garamond", Georgia, serif; font-size: clamp(96px, 13vw, 156px); color: var(--forest); letter-spacing: 0.01em; line-height: 0.9; }
-    .date { position: relative; z-index: 2; margin-top: 18px; color: var(--earth); font-size: 13px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; }
+    .hero-card { min-height: 600px; position: relative; padding: 24px; border-radius: 42px; border: 1px solid rgba(116,134,77,0.24); background: linear-gradient(145deg, rgba(255,255,255,0.90), rgba(238,244,232,0.70)); box-shadow: var(--shadow); overflow: hidden; }
+    .hero-card::before { content: ""; position: absolute; inset: 18px; border: 1px solid rgba(116,134,77,0.22); border-radius: 32px; pointer-events: none; }
+    .hero-card::after { content: ""; position: absolute; width: 360px; height: 360px; right: -120px; top: -130px; border-radius: 50%; background: radial-gradient(circle, rgba(184,201,161,0.35), transparent 66%); pointer-events: none; }
+    .monogram-card { min-height: 552px; height: 100%; display: grid; place-items: center; text-align: center; border-radius: 32px; background: radial-gradient(circle at 50% 38%, rgba(255,255,255,0.90), rgba(255,255,255,0.36) 34%, transparent 35%), linear-gradient(180deg, rgba(251,248,238,0.96), rgba(238,244,232,0.70)); overflow: hidden; position: relative; }
+    .wreath { position: absolute; width: min(78%, 390px); aspect-ratio: 1; border: 1px solid rgba(116,134,77,0.32); border-radius: 50%; top: 52px; left: 50%; transform: translateX(-50%); }
+    .wreath::before, .wreath::after { content: ""; position: absolute; inset: 12px; border: 1px solid rgba(183,146,90,0.18); border-radius: 47% 53% 50% 50%; }
+    .wreath::after { inset: 25px; border-color: rgba(116,134,77,0.18); transform: rotate(14deg); }
+    .letters { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; gap: clamp(8px, 2vw, 18px); width: 100%; font-family: "Great Vibes", "Cormorant Garamond", Georgia, serif; font-size: clamp(100px, 13vw, 158px); color: var(--forest); line-height: 0.9; transform: translateY(-4px); }
+    .letters .initial { min-width: 0.45em; text-align: center; }
+    .letters .amp-card { color: var(--moss); font-size: 0.70em; transform: translateY(2px); }
+    .date { position: relative; z-index: 2; margin-top: 12px; color: var(--earth); font-size: 13px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; }
+    .forest-line { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; color: rgba(47,74,50,0.78); }
+    .forest-line svg { display: block; width: 100%; height: 170px; }
     .countdown { position: absolute; left: 24px; right: 24px; bottom: 24px; z-index: 3; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
-    .count-box { padding: 14px 8px; border-radius: 20px; background: rgba(255,255,255,0.78); border: 1px solid rgba(116,134,77,0.20); text-align: center; backdrop-filter: blur(10px); }
+    .count-box { padding: 14px 8px; border-radius: 20px; background: rgba(255,255,255,0.82); border: 1px solid rgba(116,134,77,0.20); text-align: center; backdrop-filter: blur(10px); }
     .count-box strong { display: block; font-family: "Cormorant Garamond", Georgia, serif; font-size: clamp(28px, 4vw, 38px); color: var(--forest); line-height: 1; }
     .count-box span { display: block; margin-top: 3px; color: var(--muted); font-size: 12px; font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase; }
 
-    .section { padding: 86px 0; }
-    .heading { text-align: center; margin-bottom: 34px; }
-    .small { color: var(--moss); font-size: 13px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 12px; }
-    h2 { font-size: clamp(44px, 7vw, 78px); letter-spacing: -0.02em; }
-    .heading p { max-width: 720px; margin: 18px auto 0; color: var(--muted); font-size: 18px; line-height: 1.7; }
-
-    .event-grid { display: grid; grid-template-columns: 1fr; gap: 18px; max-width: 720px; margin: 0 auto; }
+    .section { padding: 76px 0; }
+    .event-grid { display: grid; grid-template-columns: 1fr; gap: 18px; max-width: 760px; margin: 0 auto; }
     .rsvp-grid { display: grid; grid-template-columns: 0.78fr 1.22fr; gap: 22px; align-items: start; }
-    .card { border: 1px solid rgba(116,134,77,0.22); border-radius: 30px; background: rgba(255,255,255,0.70); box-shadow: var(--soft); backdrop-filter: blur(18px); }
+    .card { border: 1px solid rgba(116,134,77,0.22); border-radius: 30px; background: rgba(255,255,255,0.74); box-shadow: var(--soft); backdrop-filter: blur(18px); }
     .event-card, .note-card, .form-card { padding: 30px; }
-    .event-card { position: relative; overflow: hidden; }
-    .event-card::after { content: ""; position: absolute; width: 190px; height: 190px; right: -76px; top: -76px; border-radius: 90% 10% 80% 20%; background: rgba(116,134,77,0.14); transform: rotate(28deg); }
-    .event-card h3 { position: relative; z-index: 1; font-size: clamp(44px, 6vw, 68px); color: var(--forest); font-family: "Great Vibes", "Cormorant Garamond", Georgia, serif; font-weight: 400; letter-spacing: 0.01em; }
-    .event-date { margin: 14px 0 22px; color: var(--earth); font-family: "Cormorant Garamond", Georgia, serif; font-size: 24px; font-weight: 600; }
+    .event-card { position: relative; overflow: hidden; background: linear-gradient(135deg, rgba(255,255,255,0.88), rgba(251,248,238,0.72)); }
+    .event-card::before { content: ""; position: absolute; left: 30px; right: 30px; top: 0; height: 4px; border-radius: 0 0 999px 999px; background: linear-gradient(90deg, transparent, rgba(116,134,77,0.50), rgba(183,146,90,0.42), transparent); }
+    .event-card::after { content: ""; position: absolute; width: 190px; height: 190px; right: -76px; top: -76px; border-radius: 90% 10% 80% 20%; background: rgba(116,134,77,0.12); transform: rotate(28deg); }
+    .event-card h3 { position: relative; z-index: 1; font-size: clamp(48px, 6vw, 70px); color: var(--forest); font-family: "Great Vibes", "Cormorant Garamond", Georgia, serif; font-weight: 400; letter-spacing: 0.01em; }
+    .event-date { margin: 12px 0 22px; color: var(--earth); font-family: "Cormorant Garamond", Georgia, serif; font-size: 24px; font-weight: 600; }
     .event-lines { display: grid; gap: 18px; color: var(--muted); }
-    .event-line { display: grid; grid-template-columns: 110px 1fr; gap: 18px; align-items: baseline; padding-top: 16px; border-top: 1px solid rgba(116,134,77,0.18); }
+    .event-line { display: grid; grid-template-columns: 112px 1fr; gap: 18px; align-items: baseline; padding-top: 16px; border-top: 1px solid rgba(116,134,77,0.18); }
     .event-line span:first-child { color: var(--moss); font-size: 12px; font-weight: 900; letter-spacing: 0.14em; text-transform: uppercase; }
     .event-line strong { color: var(--ink); font-family: "Cormorant Garamond", Georgia, serif; font-size: 24px; font-weight: 600; line-height: 1.35; }
-    .time-list { display: grid; gap: 2px; }
+    .event-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 24px; }
+    .action-link { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 11px 14px; border-radius: 999px; border: 1px solid rgba(116,134,77,0.26); background: rgba(255,255,255,0.68); color: var(--forest); text-decoration: none; font-size: 13px; font-weight: 900; transition: 0.22s ease; }
+    .action-link:hover { transform: translateY(-1px); background: rgba(238,244,232,0.88); border-color: rgba(116,134,77,0.45); }
+
+    .heading { text-align: center; margin-bottom: 34px; }
+    .small { color: var(--moss); font-size: 13px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 12px; }
+    h2 { font-size: clamp(44px, 7vw, 78px); letter-spacing: -0.02em; font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; }
+    .heading p { max-width: 720px; margin: 18px auto 0; color: var(--muted); font-size: 18px; line-height: 1.7; }
 
     .note-card { position: sticky; top: 96px; }
     .note-card h3 { font-family: "Great Vibes", "Cormorant Garamond", Georgia, serif; font-weight: 400; font-size: 50px; margin-bottom: 14px; color: var(--forest); }
@@ -170,12 +174,14 @@
       .note-card { position: static; }
     }
     @media (max-width: 620px) {
-      .section { padding: 64px 0; }
+      .section { padding: 58px 0; }
       .actions, .form-footer { align-items: stretch; flex-direction: column; }
       .btn { width: 100%; }
       .hero-card, .monogram-card { min-height: 460px; }
+      .letters { font-size: 96px; }
+      .forest-line svg { height: 140px; }
       .countdown { grid-template-columns: repeat(2, 1fr); }
-      .field-grid, .checkbox-group { grid-template-columns: 1fr; }
+      .field-grid, .checkbox-group, .event-actions { grid-template-columns: 1fr; }
       .event-line { grid-template-columns: 1fr; gap: 6px; }
       .event-card, .form-card, .note-card { padding: 22px; }
       .sound-toggle { right: 14px; bottom: 14px; width: 48px; height: 48px; }
@@ -195,7 +201,7 @@
   <div class="page">
     <header class="topbar">
       <nav class="nav" aria-label="Sayfa menüsü">
-        <a class="brand" href="#top" aria-label="Leyla ve Batuhan ana sayfa"><span class="brand-mark">☘</span><span>Leyla & Batuhan</span></a>
+        <a class="brand" href="#top" aria-label="Leyla ve Batuhan ana sayfa"><span class="brand-mark">LB</span><span>Leyla & Batuhan</span></a>
         <div class="nav-links">
           <a href="#program">Program</a>
           <a href="#katilim">Katılım</a>
@@ -218,15 +224,31 @@
           </div>
 
           <aside class="hero-card reveal" aria-label="Düğün geri sayımı">
-            <div class="monogram-card"><span class="ring"></span><span class="ring second"></span><div><div class="letters">L & B</div><div class="date">Kır Düğünü · Temmuz 2026</div></div></div>
+            <div class="monogram-card">
+              <div class="wreath"></div>
+              <div>
+                <div class="letters"><span class="initial">L</span><span class="amp-card">&</span><span class="initial">B</span></div>
+                <div class="date">Kır Düğünü · Temmuz 2026</div>
+              </div>
+              <div class="forest-line" aria-hidden="true">
+                <svg viewBox="0 0 520 170" preserveAspectRatio="none">
+                  <path fill="rgba(47,74,50,0.10)" d="M0 126 C70 106 120 118 185 98 C260 76 318 98 390 80 C452 65 488 78 520 66 L520 170 L0 170 Z" />
+                  <g fill="currentColor">
+                    <path d="M23 150 L46 112 L35 112 L55 82 L43 82 L64 48 L86 82 L74 82 L94 112 L83 112 L106 150 Z" opacity=".68"/>
+                    <path d="M100 154 L122 118 L112 118 L132 89 L120 89 L140 56 L162 89 L150 89 L170 118 L159 118 L182 154 Z" opacity=".48"/>
+                    <path d="M320 154 L344 114 L333 114 L354 83 L342 83 L365 45 L388 83 L376 83 L397 114 L386 114 L410 154 Z" opacity=".58"/>
+                    <path d="M405 150 L425 118 L416 118 L434 92 L424 92 L443 60 L463 92 L453 92 L471 118 L462 118 L482 150 Z" opacity=".42"/>
+                    <path d="M450 158 L474 116 L463 116 L484 84 L472 84 L495 48 L518 84 L506 84 L520 106 L520 158 Z" opacity=".52"/>
+                  </g>
+                </svg>
+              </div>
+            </div>
             <div class="countdown" id="countdown"><div class="count-box"><strong id="days">--</strong><span>Gün</span></div><div class="count-box"><strong id="hours">--</strong><span>Saat</span></div><div class="count-box"><strong id="minutes">--</strong><span>Dakika</span></div><div class="count-box"><strong id="seconds">--</strong><span>Saniye</span></div></div>
           </aside>
         </div>
       </section>
 
       <section class="section wrap" id="program">
-        <div class="heading reveal"><div class="small">Program</div><h2>Doğanın içinde zarif bir kutlama</h2><p>Resmi nikahımız Edirne’de, kır düğünümüz ise doğanın içinde İstanbul Polonezköy’de gerçekleşecektir.</p></div>
-
         <div class="event-grid">
           <article class="card event-card reveal">
             <h3>Nikah</h3>
@@ -235,14 +257,26 @@
               <div class="event-line"><span>Saat</span><strong>16:30</strong></div>
               <div class="event-line"><span>Konum</span><strong>Edirne Atatürk Kültür Merkezi</strong></div>
             </div>
+            <div class="event-actions">
+              <a class="action-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Edirne%20Atat%C3%BCrk%20K%C3%BClt%C3%BCr%20Merkezi">Google Harita</a>
+              <a class="action-link" target="_blank" rel="noopener" href="https://maps.apple.com/?q=Edirne%20Atat%C3%BCrk%20K%C3%BClt%C3%BCr%20Merkezi">Apple Harita</a>
+              <a class="action-link" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Leyla%20%26%20Batuhan%20Nikah&dates=20260711T133000Z/20260711T143000Z&details=Leyla%20%26%20Batuhan%20nikah%20t%C3%B6reni&location=Edirne%20Atat%C3%BCrk%20K%C3%BClt%C3%BCr%20Merkezi">Google Takvim</a>
+              <a class="action-link" href="/nikah.ics">Apple Takvim</a>
+            </div>
           </article>
 
           <article class="card event-card reveal">
             <h3>Düğün</h3>
             <div class="event-date">18 Temmuz 2026 Cumartesi</div>
             <div class="event-lines">
-              <div class="event-line"><span>Saat</span><strong class="time-list"><span>19:00 Kokteyl</span><span>19:30 Nikah</span><span>20:00 Yemek</span></strong></div>
+              <div class="event-line"><span>Saat</span><strong>19:00</strong></div>
               <div class="event-line"><span>Konum</span><strong>Senfoni Garden Kır Düğünü, Polonezköy / İstanbul</strong></div>
+            </div>
+            <div class="event-actions">
+              <a class="action-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Senfoni%20Garden%20K%C4%B1r%20D%C3%BC%C4%9F%C3%BCn%C3%BC%20Polonezk%C3%B6y%20%C4%B0stanbul">Google Harita</a>
+              <a class="action-link" target="_blank" rel="noopener" href="https://maps.apple.com/?q=Senfoni%20Garden%20K%C4%B1r%20D%C3%BC%C4%9F%C3%BCn%C3%BC%20Polonezk%C3%B6y%20%C4%B0stanbul">Apple Harita</a>
+              <a class="action-link" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Leyla%20%26%20Batuhan%20D%C3%BC%C4%9F%C3%BCn&dates=20260718T160000Z/20260718T210000Z&details=Leyla%20%26%20Batuhan%20k%C4%B1r%20d%C3%BC%C4%9F%C3%BCn%C3%BC&location=Senfoni%20Garden%20K%C4%B1r%20D%C3%BC%C4%9F%C3%BCn%C3%BC%2C%20Polonezk%C3%B6y%2C%20%C4%B0stanbul">Google Takvim</a>
+              <a class="action-link" href="/dugun.ics">Apple Takvim</a>
             </div>
           </article>
         </div>
