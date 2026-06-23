@@ -85,7 +85,12 @@
     h1 { font-family: "Great Vibes", "Cormorant Garamond", Georgia, serif; font-size: clamp(78px, 13vw, 150px); font-weight: 400; letter-spacing: 0.01em; line-height: 0.92; }
     h2, h3 { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 600; }
     .amp { color: var(--moss); font-style: normal; }
-    .lead { max-width: 660px; margin: 24px 0 0; color: var(--muted); font-size: clamp(17px, 2.5vw, 22px); line-height: 1.7; }
+    .invite-divider { position: relative; width: min(360px, 72%); height: 18px; margin: 18px 0 6px; }
+    .invite-divider::before, .invite-divider::after { content: ""; position: absolute; top: 50%; width: 43%; height: 1px; background: linear-gradient(90deg, transparent, rgba(183,146,90,0.72)); }
+    .invite-divider::before { left: 0; }
+    .invite-divider::after { right: 0; transform: scaleX(-1); }
+    .invite-divider span { position: absolute; left: 50%; top: 50%; width: 7px; height: 7px; border: 1px solid rgba(183,146,90,0.75); border-radius: 50%; transform: translate(-50%, -50%); background: rgba(251,248,238,0.92); box-shadow: 0 0 0 5px rgba(251,248,238,0.92); }
+    .lead { max-width: 660px; margin: 18px 0 0; color: var(--muted); font-size: clamp(17px, 2.5vw, 22px); line-height: 1.7; }
     .quote { max-width: 620px; margin: 28px 0 0; padding: 18px 20px; border-left: 3px solid var(--moss); border-radius: 0 18px 18px 0; color: var(--forest); background: rgba(255,255,255,0.58); box-shadow: var(--soft); line-height: 1.6; }
     .quote strong { display: block; margin-top: 8px; color: var(--earth); font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
     .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
@@ -94,17 +99,18 @@
     .btn-primary { background: var(--forest); color: #fff; border-color: var(--forest); }
     .btn-light { background: rgba(255,255,255,0.72); color: var(--forest); }
 
-    .hero-card { min-height: 600px; position: relative; padding: 24px; border-radius: 42px; border: 1px solid rgba(116,134,77,0.24); background: linear-gradient(145deg, rgba(255,255,255,0.90), rgba(238,244,232,0.70)); box-shadow: var(--shadow); overflow: hidden; }
+    .hero-card { min-height: 600px; position: relative; padding: 24px; border-radius: 42px; border: 1px solid rgba(116,134,77,0.24); background: linear-gradient(145deg, rgba(255,255,255,0.92), rgba(238,244,232,0.70)); box-shadow: var(--shadow); overflow: hidden; }
     .hero-card::before { content: ""; position: absolute; inset: 18px; border: 1px solid rgba(116,134,77,0.22); border-radius: 32px; pointer-events: none; }
     .hero-card::after { content: ""; position: absolute; width: 360px; height: 360px; right: -120px; top: -130px; border-radius: 50%; background: radial-gradient(circle, rgba(184,201,161,0.35), transparent 66%); pointer-events: none; }
-    .monogram-card { min-height: 552px; height: 100%; display: grid; place-items: center; text-align: center; border-radius: 32px; background: radial-gradient(circle at 50% 38%, rgba(255,255,255,0.90), rgba(255,255,255,0.36) 34%, transparent 35%), linear-gradient(180deg, rgba(251,248,238,0.96), rgba(238,244,232,0.70)); overflow: hidden; position: relative; }
+    .monogram-card { min-height: 552px; height: 100%; display: grid; place-items: center; text-align: center; border-radius: 32px; background: radial-gradient(circle at 50% 38%, rgba(255,255,255,0.92), rgba(255,255,255,0.38) 34%, transparent 35%), linear-gradient(180deg, rgba(251,248,238,0.98), rgba(238,244,232,0.72)); overflow: hidden; position: relative; }
+    .monogram-card::after { content: ""; position: absolute; inset: 34px; border: 1px solid rgba(183,146,90,0.20); border-radius: 28px; pointer-events: none; }
     .wreath { position: absolute; width: min(78%, 390px); aspect-ratio: 1; border: 1px solid rgba(116,134,77,0.32); border-radius: 50%; top: 52px; left: 50%; transform: translateX(-50%); }
     .wreath::before, .wreath::after { content: ""; position: absolute; inset: 12px; border: 1px solid rgba(183,146,90,0.18); border-radius: 47% 53% 50% 50%; }
     .wreath::after { inset: 25px; border-color: rgba(116,134,77,0.18); transform: rotate(14deg); }
     .letters { position: relative; z-index: 2; display: flex; align-items: center; justify-content: center; gap: clamp(8px, 2vw, 18px); width: 100%; font-family: "Great Vibes", "Cormorant Garamond", Georgia, serif; font-size: clamp(100px, 13vw, 158px); color: var(--forest); line-height: 0.9; transform: translateY(-4px); }
     .letters .initial { min-width: 0.45em; text-align: center; }
     .letters .amp-card { color: var(--moss); font-size: 0.70em; transform: translateY(2px); }
-    .date { position: relative; z-index: 2; margin-top: 12px; color: var(--earth); font-size: 13px; font-weight: 900; letter-spacing: 0.16em; text-transform: uppercase; }
+    .date { position: relative; z-index: 2; margin-top: 12px; color: var(--earth); font-size: 13px; font-weight: 900; letter-spacing: 0.18em; text-transform: uppercase; }
     .forest-line { position: absolute; left: 0; right: 0; bottom: 0; z-index: 1; color: rgba(47,74,50,0.78); }
     .forest-line svg { display: block; width: 100%; height: 170px; }
     .countdown { position: absolute; left: 24px; right: 24px; bottom: 24px; z-index: 3; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
@@ -117,7 +123,7 @@
     .rsvp-grid { display: grid; grid-template-columns: 0.78fr 1.22fr; gap: 22px; align-items: start; }
     .card { border: 1px solid rgba(116,134,77,0.22); border-radius: 30px; background: rgba(255,255,255,0.74); box-shadow: var(--soft); backdrop-filter: blur(18px); }
     .event-card, .note-card, .form-card { padding: 30px; }
-    .event-card { position: relative; overflow: hidden; background: linear-gradient(135deg, rgba(255,255,255,0.88), rgba(251,248,238,0.72)); }
+    .event-card { position: relative; overflow: hidden; background: linear-gradient(135deg, rgba(255,255,255,0.90), rgba(251,248,238,0.74)); }
     .event-card::before { content: ""; position: absolute; left: 30px; right: 30px; top: 0; height: 4px; border-radius: 0 0 999px 999px; background: linear-gradient(90deg, transparent, rgba(116,134,77,0.50), rgba(183,146,90,0.42), transparent); }
     .event-card::after { content: ""; position: absolute; width: 190px; height: 190px; right: -76px; top: -76px; border-radius: 90% 10% 80% 20%; background: rgba(116,134,77,0.12); transform: rotate(28deg); }
     .event-card h3 { position: relative; z-index: 1; font-size: clamp(48px, 6vw, 70px); color: var(--forest); font-family: "Great Vibes", "Cormorant Garamond", Georgia, serif; font-weight: 400; letter-spacing: 0.01em; }
@@ -215,7 +221,8 @@
           <div class="reveal">
             <p class="eyebrow">11 & 18 Temmuz 2026</p>
             <h1>Leyla <span class="amp">&</span><br />Batuhan</h1>
-            <p class="lead">Hayatımızın en güzel günlerinde yanımızda olmanızdan mutluluk duyarız. Nikah ve kır düğünü detaylarını ve katılım formunu bu sayfada topladık.</p>
+            <div class="invite-divider" aria-hidden="true"><span></span></div>
+            <p class="lead">Hayatımızın en güzel günlerinde yanımızda olmanızdan mutluluk duyarız. Nikah ve düğün detaylarını, yol tariflerini ve katılım formunu bu sayfada topladık.</p>
             <div class="quote">“Uygarlığın, ilerlemenin ve güçlülüğün temeli, aile yaşamıdır.”<strong>Mustafa Kemal Atatürk</strong></div>
             <div class="actions">
               <a class="btn btn-primary" href="#katilim">Katılım Bildir</a>
@@ -228,7 +235,7 @@
               <div class="wreath"></div>
               <div>
                 <div class="letters"><span class="initial">L</span><span class="amp-card">&</span><span class="initial">B</span></div>
-                <div class="date">Kır Düğünü · Temmuz 2026</div>
+                <div class="date">Temmuz 2026</div>
               </div>
               <div class="forest-line" aria-hidden="true">
                 <svg viewBox="0 0 520 170" preserveAspectRatio="none">
